@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="390dp"
+    android:layout_gravity="center"
+    android:layout_height="450dp"
+    android:orientation="vertical"
+    android:background="#483d8b"
+    android:padding="10dp">
+    <Button
+        android:layout_width="24dp"
+        android:id="@+id/closebtn"
+        android:layout_margin="5dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_close_gold_24dp"/>
+    <EditText
+        android:id="@+id/postspace"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/closebtn"
+        android:layout_margin="5dp"
+        android:background="@layout/rounded_border_post"
+        android:hint="Write your post here ..."
+        android:imeOptions="actionDone"
+        android:maxLength="140"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#115"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/charactercount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:paddingEnd="20dp"
+        android:text="0"
+        android:textColor="#FFD700"
+        android:textSize="18sp"
+        android:layout_below="@id/postspace"
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/postbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@layout/rounded_border_button"
+        android:drawableStart="@drawable/ic_send_black_24dp"
+        android:padding="10dp"
+        android:text="POST"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"/>
+
+</RelativeLayout>

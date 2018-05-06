@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "437259993326",
+    "firebase_url": "https://fcis-assistant-f9e2d.firebaseio.com",
+    "project_id": "fcis-assistant-f9e2d",
+    "storage_bucket": "fcis-assistant-f9e2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437259993326:android:7081e9bf4ef5c690",
+        "android_client_info": {
+          "package_name": "com.abamed.fcisassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437259993326-lamt5oc7tq432smhg9njtf2ooo8l3nr5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abamed.fcisassistant",
+            "certificate_hash": "9d3b9dba3fc405dd62ff94f0c0567bf4743f4985"
+          }
+        },
+        {
+          "client_id": "437259993326-01i73a24974t58etpldo9acinsmp8htg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8QTkySYpZH8rd0-oXinGmi4opXOMcUpI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437259993326-01i73a24974t58etpldo9acinsmp8htg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

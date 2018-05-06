@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignIn">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        >
+        <RelativeLayout
+            android:background="@drawable/login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_centerInParent="true"
+            >
+
+            <Button
+                android:id="@+id/Signinbtn"
+                style="@android:style/Widget.Button"
+                android:layout_width="175dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/passwordbox"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:background="@layout/rounded_border_button"
+                android:drawableStart="@drawable/ic_login_24dp"
+                android:padding="5dp"
+                android:text="Sign In"
+                android:textColor="#3b5998"
+                android:textStyle="bold"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/passwordbox"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/emailbox"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="25dp"
+                android:background="@layout/rounded_border_edittext"
+                android:drawableStart="@drawable/ic_lock_black_24dp"
+                android:ems="10"
+                android:textColorHint="#66cccc"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColor="#080808"
+                android:textSize="24sp"
+                android:textStyle="bold">
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/emailbox"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/profileimage"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:background="@layout/rounded_border_edittext"
+                android:drawableStart="@drawable/ic_email_black_24dp"
+                android:ems="10"
+                android:hint="Email"
+                android:textColorHint="#66cccc"
+                android:inputType="textEmailAddress"
+                android:padding="5dp"
+                android:selectAllOnFocus="false"
+                android:singleLine="false"
+                android:textAlignment="center"
+                android:textColor="#080808"
+                android:textSize="24sp"
+                android:textStyle="bold">
+
+                <requestFocus />
+            </EditText>
+
+            <ImageView
+                android:id="@+id/profileimage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="34dp"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ana" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

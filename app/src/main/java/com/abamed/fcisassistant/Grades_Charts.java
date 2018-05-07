@@ -114,4 +114,9 @@ public class Grades_Charts extends AppCompatActivity {
     public void setCourseGradesPercentage(float[] courseGradesPercentage) {
         CourseGradesPercentage = courseGradesPercentage;
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 }

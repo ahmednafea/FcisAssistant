@@ -4,7 +4,7 @@
     android:layout_gravity="center"
     android:layout_width="390dp"
     android:layout_height="420dp"
-    android:background="#483d8b"
+    android:background="@drawable/login"
     android:padding="10dp"
     tools:context=".Grades_Charts">
     <Button

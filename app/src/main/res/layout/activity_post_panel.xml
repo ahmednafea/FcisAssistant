@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:layout_height="450dp"
     android:orientation="vertical"
-    android:background="#483d8b"
+    android:background="@drawable/login"
     android:padding="10dp">
     <Button
         android:layout_width="24dp"

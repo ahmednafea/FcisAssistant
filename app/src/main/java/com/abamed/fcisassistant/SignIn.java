@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import FcisAssistant.FirebaseClass;
+
 public class SignIn extends AppCompatActivity {
     protected EditText emailtext;
     protected EditText passwordtext;

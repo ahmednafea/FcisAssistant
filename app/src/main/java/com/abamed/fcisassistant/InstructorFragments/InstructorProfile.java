@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.abamed.fcisassistant.R;
 
+import FcisAssistant.Adminstration;
 import FcisAssistant.Instructor;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -19,7 +20,6 @@ public class InstructorProfile extends Fragment {
     CircleImageView circleImageView;
     RatingBar rb ;
     TextView value,Name,Email,officehours;
-    Instructor instructor;
     public InstructorProfile() {
         // Required empty public constructor
     }
@@ -40,7 +40,6 @@ public class InstructorProfile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_instructor_profile, container, false);
-//        instructor=new Instructor((long) 25142,"Islam hegazy","Male","2:4 pm","email20","11111");
         rb=view.findViewById(R.id.ratingBar);
         value=view.findViewById(R.id.value);
         officehours=view.findViewById(R.id.officehours);
@@ -53,10 +52,10 @@ public class InstructorProfile extends Fragment {
                 value.setText("Value is " + rating);
             }
         });
-        Name.setText(instructor.getName());
-        Email.setText(instructor.getEmail());
-        officehours.setText(instructor.getOfficeHours());
-        circleImageView.setImageResource(instructor.getImage());
+        Name.setText("Eslam hejazy");
+        Email.setText("eslam@gmail.com");
+        officehours.setText("2:00 to 4:00 pm");
+        circleImageView.setImageResource(R.drawable.profile);
         return view;
     }
 }

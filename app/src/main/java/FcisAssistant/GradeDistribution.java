@@ -10,17 +10,28 @@ public class GradeDistribution {
     protected int MaxPractical;
     protected int MaxWeight;
 
-    public GradeDistribution() {
-         MaxAssignment=0;
-         MaxMidterm=0;
-         MaxFinal=0;
-        MaxAttendance=0;
-         MaxBounce=0;
-         MaxQuizzes=0;
-         MaxPractical=0;
-         MaxWeight=0;
+    public GradeDistribution(int maxAssignment,
+                             int maxMidterm, int maxFinal, int maxAttendance,
+                             int maxBounce, int maxQuizzes, int maxPractical, int maxWeight) {
+        MaxAssignment = maxAssignment;
+        MaxMidterm = maxMidterm;
+        MaxFinal = maxFinal;
+        MaxAttendance = maxAttendance;
+        MaxBounce = maxBounce;
+        MaxQuizzes = maxQuizzes;
+        MaxPractical = maxPractical;
+        MaxWeight = maxWeight;
     }
-
+    public GradeDistribution() {
+        MaxAssignment=0;
+        MaxMidterm=0;
+        MaxFinal=0;
+        MaxAttendance=0;
+        MaxBounce=0;
+        MaxQuizzes=0;
+        MaxPractical=0;
+        MaxWeight=0;
+    }
     public int getMaxAssignment() {
         return MaxAssignment;
     }

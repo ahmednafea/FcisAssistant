@@ -20,14 +20,15 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import FcisAssistant.Adminstration;
 import FcisAssistant.Course;
+import FcisAssistant.GPA;
 import FcisAssistant.Student;
 
 public class Grades_Charts extends AppCompatActivity {
-    private float[] CourseGradesPercentage;
-    private String[] GPANames;
+    private ArrayList<GPA> CourseGradesPercentage;
     private  PieChart chart;
-    private Course course;
+    private String CourseName;
    /* public Grades_Charts(float [] courseGradesPercentage,String [] gpaNames, Course course) {
     CourseGradesPercentage=courseGradesPercentage;
     GPANames=gpaNames;
@@ -38,16 +39,17 @@ public class Grades_Charts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grades__charts);
+        Bundle B = getIntent().getExtras();
+        CourseName = B != null ? B.getString("Coursename") : null;
         chart = (PieChart) findViewById(R.id.gradeschart);
-        GPANames= new String[]{"C", "A", "A-", "B+"};
-        CourseGradesPercentage=new float[]{25f,5f,15f,55f};
+        CourseGradesPercentage= Adminstration.instructor.getCourselist().get(Coursesearch(CourseName)).getGradesPercentage();
         Description description=new Description();
-        description.setText("This is "+"OOP "+"grades charts");
+        description.setText("This is "+CourseName+"grades charts");
         chart.setDescription(description);
         chart.setRotationEnabled(true);
         chart.setHoleRadius(30f);
         chart.setTransparentCircleAlpha(0);
-        chart.setCenterText("OOP "+" Grades");
+        chart.setCenterText(CourseName+" Grades");
         chart.setCenterTextSize(16);
         addsetchart(chart);
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
@@ -60,14 +62,14 @@ public class Grades_Charts extends AppCompatActivity {
                 int pos1 = e.toString().indexOf("(sum): ");
                 String num = e.toString().substring(pos1 + 7);
 
-                for(int i = 0; i < CourseGradesPercentage.length; i++){
-                    if(CourseGradesPercentage[i] == Float.parseFloat(num)){
+                for(int i = 0; i < CourseGradesPercentage.size(); i++){
+                    if(CourseGradesPercentage.get(i).getCount() == Float.parseFloat(num)){
                         pos1 = i;
                         break;
                     }
                 }
-                String GRADE = GPANames[pos1 + 1];
-                Toast.makeText(Grades_Charts.this, "GPA" + GRADE + "\n" + "No of Students : " + num + " Students", Toast.LENGTH_LONG).show();
+                String GRADE = CourseGradesPercentage.get(pos1 + 1).getSymbol();
+                Toast.makeText(Grades_Charts.this,  GRADE + "\n" + String.valueOf(CourseGradesPercentage.get(pos1+1)) + num + " Students", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -78,12 +80,19 @@ public class Grades_Charts extends AppCompatActivity {
 
 
     }
+    public int Coursesearch(String CourseName){
+        for (int i=0;i<Adminstration.instructor.getCourselist().size();i++){
+            if(Adminstration.student.getCourselist().get(i).getName().equals(CourseName))
+                return i;
+        }
+        return -1;
+    }
     public void addsetchart(PieChart pieChart){
         ArrayList<PieEntry> Yentry=new ArrayList<>();
-        for (int i=0;i<CourseGradesPercentage.length;i++){
-            Yentry.add(new PieEntry(CourseGradesPercentage[i],i));
+        for (int i=0;i<CourseGradesPercentage.size();i++){
+            Yentry.add(new PieEntry(CourseGradesPercentage.get(i).getCount(),i));
         }
-        ArrayList<String> Xentry = new ArrayList<>(Arrays.asList(GPANames));
+        ArrayList<GPA> Xentry = CourseGradesPercentage;
         PieDataSet pieDataSet=new PieDataSet(Yentry,"Grade");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(16);
@@ -111,7 +120,7 @@ public class Grades_Charts extends AppCompatActivity {
     public void cls(View view){
         Grades_Charts.this.finish();
     }
-    public void setCourseGradesPercentage(float[] courseGradesPercentage) {
+    public void setCourseGradesPercentage(ArrayList<GPA> courseGradesPercentage) {
         CourseGradesPercentage = courseGradesPercentage;
     }
     @Override

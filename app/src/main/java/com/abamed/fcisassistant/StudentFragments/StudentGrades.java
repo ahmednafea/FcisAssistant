@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,11 @@ import com.abamed.fcisassistant.R;
 import com.abamed.fcisassistant.SignIn;
 import com.abamed.fcisassistant.SignUp;
 import com.abamed.fcisassistant.StudentNavigation;
+
+import java.util.ArrayList;
+
+import FcisAssistant.Adminstration;
+import FcisAssistant.StudentCourse;
 
 
 public class StudentGrades extends Fragment {
@@ -59,7 +65,6 @@ public class StudentGrades extends Fragment {
         return view;
     }
     class GradesAdapter extends RecyclerView.Adapter<GradesAdapter.ViewHolder> {
-
         private String[] Courses ;
         private int [] images ;
 
@@ -76,7 +81,8 @@ public class StudentGrades extends Fragment {
                 itemTitle = (TextView)itemView.findViewById(R.id.coursename);
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), Grades_Charts.class);
+                        Intent intent = new Intent(getActivity(), Course_Grades.class);
+                        //intent.putExtra("Coursename",itemTitle.getText().toString());
                         startActivity(intent);
                     }
                 });
@@ -93,7 +99,7 @@ public class StudentGrades extends Fragment {
         @Override
         public void onBindViewHolder(ViewHolder viewHolder, int i) {
             viewHolder.itemTitle.setText(Courses[i]);
-            viewHolder.itemImage.setImageResource(images[i]);
+            viewHolder.itemImage.setImageResource(R.drawable.material);
         }
 
         @Override

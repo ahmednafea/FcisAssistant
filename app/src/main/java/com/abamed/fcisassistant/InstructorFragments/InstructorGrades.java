@@ -1,5 +1,6 @@
 package com.abamed.fcisassistant.InstructorFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,6 +13,15 @@ import android.widget.TextView;
 
 import com.abamed.fcisassistant.Course_Grades;
 import com.abamed.fcisassistant.R;
+import com.abamed.fcisassistant.StudentGradeEditable;
+import com.abamed.fcisassistant.StudentList;
+
+import java.util.ArrayList;
+
+import FcisAssistant.Adminstration;
+import FcisAssistant.Instructor;
+import FcisAssistant.InstructorCourse;
+import FcisAssistant.StudentCourse;
 
 public class InstructorGrades extends Fragment {
     RecyclerView recyclerView;
@@ -53,6 +63,7 @@ public class InstructorGrades extends Fragment {
         private String[] Courses ;
         private int [] images ;
 
+
         Instructor_Grades_Adapter(String[] titles, int[] images) {
             this.Courses = titles;
             this.images = images;
@@ -66,11 +77,11 @@ public class InstructorGrades extends Fragment {
                 itemTitle = (TextView)itemView.findViewById(R.id.coursename);
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override public void onClick(View v) {
-                        Course_Grades course_grades=new Course_Grades();
-                        startActivity(course_grades.getIntent());
+                        Intent intent = new Intent(getActivity(), StudentList.class);
+                     //   intent.putExtra("Coursename",itemTitle.getText().toString());
+                        startActivity(intent);
                     }
-                });
-            }
+                });           }
         }
 
         @Override
@@ -83,7 +94,7 @@ public class InstructorGrades extends Fragment {
         @Override
         public void onBindViewHolder(ViewHolder viewHolder, int i) {
             viewHolder.itemTitle.setText(Courses[i]);
-            viewHolder.itemImage.setImageResource(images[i]);
+            viewHolder.itemImage.setImageResource(R.drawable.material);
         }
 
         @Override

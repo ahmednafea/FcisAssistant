@@ -16,9 +16,4 @@
         android:icon="@drawable/discussion"
         android:title="Discussion" />
 
-    <item
-        android:id="@+id/student_navigation_table"
-        android:icon="@drawable/table"
-        android:title="Table" />
-
 </menu>

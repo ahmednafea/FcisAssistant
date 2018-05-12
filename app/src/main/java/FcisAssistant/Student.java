@@ -3,22 +3,38 @@ import android.view.View;
 
 import com.abamed.fcisassistant.InstructorFragments.InstructorProfile;
 
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.zip.Inflater;
 
 public class Student extends Person {
-    protected int CreditHours;
-    protected int RCreditHours;
+    protected long CreditHours;
+    protected long RCreditHours;
     protected String AcademicYear;
     protected String Department;
-    protected Vector<StudentCourse> Courselist;
+    protected ArrayList<StudentCourse> Courselist;
     protected float CumulativeGpa;
-    protected int TotalCreditHours;
-    protected int RTotalCreditHours;
-    public Student(){}
+    protected long TotalCreditHours;
+    protected long RTotalCreditHours;
+    public Student(){
+        ID="0";
+        Name="No Name";
+        Gender="No gender";
+        Email="No Email";
+        Password="No Password";
+        CreditHours=0;
+        RCreditHours=21;
+        AcademicYear="None";
+        Department="None";
+        TotalCreditHours=144;
+        RTotalCreditHours=0;
+        Courselist=new ArrayList<>();
+        InsertCourse(new StudentCourse());
+    }
 
 
-    public Student(String id ,String name,String gender,String email,String password ,String academicYear,String department,int rTotalCreditHours){
+    public Student(String id ,String name,String gender,String email,String password ,String academicYear,String department,
+                   int rTotalCreditHours){
         ID=id;
         Name=name;
         Gender=gender;
@@ -30,28 +46,35 @@ public class Student extends Person {
         Department=department;
         TotalCreditHours=144;
         RTotalCreditHours=rTotalCreditHours;
-
     }
     public void InsertCourse(StudentCourse c) {
-    Courselist.add(c);
-    CreditHours+=c.CreditHours;
-    RCreditHours-=c.CreditHours;
-    RTotalCreditHours-=c.CreditHours;
+        Courselist.add(c);
+        CreditHours+=c.CreditHours;
+        RCreditHours-=c.CreditHours;
+        RTotalCreditHours-=c.CreditHours;
     }
 
-    public int getCreditHours() {
+    public ArrayList<StudentCourse> getCourselist() {
+        return Courselist;
+    }
+
+    public void setCourselist(ArrayList<StudentCourse> courselist) {
+        Courselist = courselist;
+    }
+
+    public long getCreditHours() {
         return CreditHours;
     }
 
-    public void setCreditHours(int creditHours) {
+    public void setCreditHours(long creditHours) {
         CreditHours = creditHours;
     }
 
-    public int getRCreditHours() {
+    public long getRCreditHours() {
         return RCreditHours;
     }
 
-    public void setRCreditHours(int RCreditHours) {
+    public void setRCreditHours(long RCreditHours) {
         this.RCreditHours = RCreditHours;
     }
     public String getAcademicYear() {
@@ -78,19 +101,19 @@ public class Student extends Person {
         CumulativeGpa = cumulativeGpa;
     }
 
-    public int getTotalCreditHours() {
+    public long getTotalCreditHours() {
         return TotalCreditHours;
     }
 
-    public void setTotalCreditHours(int totalCreditHours) {
+    public void setTotalCreditHours(long totalCreditHours) {
         TotalCreditHours = totalCreditHours;
     }
 
-    public int getRTotalCreditHours() {
+    public long getRTotalCreditHours() {
         return RTotalCreditHours;
     }
 
-    public void setRTotalCreditHours(int RTotalCreditHours) {
+    public void setRTotalCreditHours(long RTotalCreditHours) {
         this.RTotalCreditHours = RTotalCreditHours;
     }
 
@@ -118,5 +141,12 @@ public class Student extends Person {
         total/=CreditHours;
         return total;
     }
-
+    @Override
+    public void EditPassword(String password){
+        setPassword(password);
+    }
+    @Override
+    public void EditEmail(String email){
+        setEmail(email);
+    }
 }

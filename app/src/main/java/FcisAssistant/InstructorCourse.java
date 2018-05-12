@@ -1,11 +1,33 @@
 package FcisAssistant;
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class InstructorCourse extends Course {
-    protected Vector<String> Studentlist;
-    protected Vector<GPA> GradesPercentage;
-   public void setTheGradesPercentage(){
+    protected ArrayList<String> Studentlist;
+    protected ArrayList<GPA> GradesPercentage;
+
+    public InstructorCourse() {
+        Studentlist.add("0");
+        setTheGradesPercentage();
+    }
+
+    public ArrayList<String> getStudentlist() {
+        return Studentlist;
+    }
+
+    public void setStudentlist(ArrayList<String> studentlist) {
+        Studentlist = studentlist;
+    }
+
+    public ArrayList<GPA> getGradesPercentage() {
+        return GradesPercentage;
+    }
+
+    public void setGradesPercentage(ArrayList<GPA> gradesPercentage) {
+        GradesPercentage = gradesPercentage;
+    }
+
+    public void setTheGradesPercentage(){
        GradesPercentage.clear();
        GradesPercentage.add(new GPA("A",0));
        GradesPercentage.add(new GPA("A-",0));
@@ -20,38 +42,38 @@ public class InstructorCourse extends Course {
        for(String id:Studentlist) {
            Student student = FirebaseClass.GetStudentInfo(id);
            for (StudentCourse s:student.Courselist){
-               if(s.Code.equals(this.Code)){
+               if(s.code.equals(this.code)){
                    s.CourseGrade.setGPA();
                    switch (s.CourseGrade.GPA) {
                        case "A":
-                           GradesPercentage.elementAt(0).Count++;
+                           GradesPercentage.get(0).Count++;
                            break;
                        case "A-":
-                           GradesPercentage.elementAt(1).Count++;
+                           GradesPercentage.get(1).Count++;
                            break;
                        case "B+":
-                           GradesPercentage.elementAt(2).Count++;
+                           GradesPercentage.get(2).Count++;
                            break;
                        case "B":
-                           GradesPercentage.elementAt(3).Count++;
+                           GradesPercentage.get(3).Count++;
                            break;
                        case "B-":
-                           GradesPercentage.elementAt(4).Count++;
+                           GradesPercentage.get(4).Count++;
                            break;
                        case "C+":
-                           GradesPercentage.elementAt(5).Count++;
+                           GradesPercentage.get(5).Count++;
                            break;
                        case "C":
-                           GradesPercentage.elementAt(6).Count++;
+                           GradesPercentage.get(6).Count++;
                            break;
                        case "C-":
-                           GradesPercentage.elementAt(7).Count++;
+                           GradesPercentage.get(7).Count++;
                            break;
                        case "D+":
-                           GradesPercentage.elementAt(8).Count++;
+                           GradesPercentage.get(8).Count++;
                            break;
                        case "F":
-                           GradesPercentage.elementAt(9).Count++;
+                           GradesPercentage.get(9).Count++;
                            break;
                    }
                }

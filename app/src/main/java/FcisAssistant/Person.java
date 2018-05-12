@@ -59,5 +59,9 @@ public abstract class Person  {
         Password = password;
     }
 
-
+    public void InsertCourse(){
+        //OverLoaded Function
+    }
+    abstract public void EditPassword(String Password);
+    abstract public void EditEmail(String Emai);
 }

@@ -15,12 +15,17 @@ import android.widget.TextView;
 
 import com.abamed.fcisassistant.R;
 
+import java.util.ArrayList;
+
+import FcisAssistant.Adminstration;
+import FcisAssistant.StudentCourse;
+
 
 public class StudentContent extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
-    String []Courses;
+    String []CourseName;
     int [] Images;
     public StudentContent() {
         // Required empty public constructor
@@ -41,24 +46,23 @@ public class StudentContent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_content, container, false);
-        Courses= new String[]{"OOP", "Logic"};
-        Images= new int[]{R.drawable.ana,R.drawable.ana};
+        CourseName= new String[]{"OOP", "Logic"};
+        Images= new int[]{R.drawable.profile,R.drawable.profile};
         recyclerView =view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new ContentAdapter(Courses,Images);
+        adapter = new ContentAdapter(CourseName,Images);
         recyclerView.setAdapter(adapter);
         return view;
     }
     class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHolder> {
+        private String[] Coursesnames ;
+        private int [] Coursesimages ;
 
-        private String[] Courses ;
-        private int [] images ;
-
-        ContentAdapter(String[] titles, int[] images) {
-            this.Courses = titles;
-            this.images = images;
+        ContentAdapter(String[] coursesnames, int[] coursesimages) {
+            Coursesnames = coursesnames;
+            Coursesimages = coursesimages;
         }
         class ViewHolder extends RecyclerView.ViewHolder{
             ImageView itemImage;
@@ -70,9 +74,9 @@ public class StudentContent extends Fragment {
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override public void onClick(View v) {
                         int position = getAdapterPosition();
-                        Snackbar.make(v, "Click detected on item " + position,
+                        Snackbar.make(v, "Sorry this Function will be added in the next edition " + position,
                                 Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
+                                .setAction("Alert", null).show();
                     }
                 });
             }
@@ -87,13 +91,13 @@ public class StudentContent extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder viewHolder, int i) {
-            viewHolder.itemTitle.setText(Courses[i]);
-            viewHolder.itemImage.setImageResource(images[i]);
+            viewHolder.itemTitle.setText(Coursesnames[i]);
+            viewHolder.itemImage.setImageResource(Coursesimages[i]);
         }
 
         @Override
         public int getItemCount() {
-            return Courses.length;
+            return Coursesnames.length;
         }
     }
 }

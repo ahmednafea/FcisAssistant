@@ -1,20 +1,28 @@
 package FcisAssistant;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Course {
-    protected String Code;
+    protected String code;
     protected String Name;
     protected String InstructorofCourse;
-    protected Vector<String> TAlist;
-    protected int CreditHours;
-    protected int image;
+    protected ArrayList<String> TAlist;
+    protected long CreditHours;
+
+    public Course(String code, String name, String instructorofCourse, ArrayList<String> TAlist, int creditHours) {
+        this.code = code;
+        Name = name;
+        InstructorofCourse = instructorofCourse;
+        this.TAlist = TAlist;
+        CreditHours = creditHours;
+    }
 
     public Course() {
-        Code=null;
-        Name=null;
-        InstructorofCourse=null;
+        code ="nocodeyet";
+        Name="noname";
+        InstructorofCourse="notyet";
         CreditHours=0;
-        image=0;
+        TAlist=new ArrayList<>();
+        TAlist.add("NoOne");
     }
 
     public String getName() {
@@ -33,29 +41,23 @@ public class Course {
         InstructorofCourse=instructorId;
     }
 
-    public int getCreditHours() {
+    public long getCreditHours() {
         return CreditHours;
     }
 
-    public void setCreditHours(int creditHours) {
+    public void setCreditHours(long creditHours) {
         CreditHours = creditHours;
     }
 
 
     public String getCode() {
-        return Code;
+        return code;
     }
 
     public void setCode(String code) {
-        Code = code;
+        this.code = code;
     }
 
-    public int getImage() {
-        return image;
-    }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
 
 }

@@ -8,13 +8,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.VideoView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
+import FcisAssistant.Adminstration;
+
 public class SplashScreen extends AppCompatActivity {
     VideoView splashvideo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         setContentView(R.layout.activity_splash_screen);
-        splashvideo=(VideoView)findViewById(R.id.splashvideo);
+                splashvideo=(VideoView)findViewById(R.id.splashvideo);
         splashvideo.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.splash));
         splashvideo.start();
         new Handler().postDelayed(new Runnable() {
@@ -25,4 +30,5 @@ public class SplashScreen extends AppCompatActivity {
             }
         },8000);
     }
+
 }

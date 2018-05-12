@@ -1,4 +1,5 @@
 package FcisAssistant;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class TeacherAssistant extends Person {
@@ -6,7 +7,7 @@ public class TeacherAssistant extends Person {
     protected int RCreditHours;
     protected String Department;
     protected int NoofEvaluators;
-    protected Vector<TACourse> Courselist;
+    protected ArrayList<TACourse> Courselist;
     protected float TotalEvaluation;
 
     public TeacherAssistant() {
@@ -21,6 +22,15 @@ public class TeacherAssistant extends Person {
         NoofEvaluators=0;
         TotalEvaluation=0;
     }
+
+    public ArrayList<TACourse> getCourselist() {
+        return Courselist;
+    }
+
+    public void setCourselist(ArrayList<TACourse> courselist) {
+        Courselist = courselist;
+    }
+
     public void InsertCourse(TACourse c) {
         Courselist.add(c);
         CreditHours+=c.CreditHours;
@@ -72,5 +82,13 @@ public class TeacherAssistant extends Person {
         TotalEvaluation*=10;
     }
 
+    @Override
+    public void EditPassword(String password){
+        setPassword(password);
+    }
+    @Override
+    public void EditEmail(String email){
+        setEmail(email);
+    }
 
 }

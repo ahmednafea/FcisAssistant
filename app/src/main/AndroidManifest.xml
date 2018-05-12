@@ -25,7 +25,6 @@
         <activity android:name=".Grades_Charts" />
         <activity android:name=".Course_Grades" />
         <activity android:name=".PostPanel" />
-        <activity android:name=".AdminstratorLayout" />
         <activity android:name=".StudentList" />
         <activity android:name=".StudentGradeEditable" />
     </application>

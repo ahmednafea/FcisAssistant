@@ -18,6 +18,7 @@ import com.abamed.fcisassistant.R;
 
 import java.util.ArrayList;
 
+import FcisAssistant.Adminstration;
 import FcisAssistant.FirebaseClass;
 import FcisAssistant.Post;
 
@@ -25,8 +26,10 @@ public class InstructorDiscussion extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
-    private ArrayList<Post> posts;
     Button newpost;
+    String []Posters;
+    String []Posts;
+    int [] Images;
     public InstructorDiscussion() {
         // Required empty public constructor
     }
@@ -46,18 +49,21 @@ public class InstructorDiscussion extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_instructor_discussion, container, false);
-        posts= FirebaseClass.ReadPosts();
+        Posters= new String[]{"Islam Hegazy", "Manal Tantawy"};
+        Posts=new String[]{"البروجيكتات هتتسلم بكرة","يا سنة تانية درجاتكم زى الزفت"};
+        Images= new int[]{R.drawable.ana,R.drawable.ana};
         newpost=view.findViewById(R.id.newpostbtn);
         recyclerView =view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(false);
         layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new DiscussionAdapter(posts);
+        adapter = new DiscussionAdapter(Posters,Posts,Images);
         recyclerView.setAdapter(adapter);
         newpost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), PostPanel.class);
+                intent.putExtra(Adminstration.instructor.getName(),"postername");
                 startActivity(intent);
             }
         });
@@ -65,10 +71,16 @@ public class InstructorDiscussion extends Fragment {
     }
     class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.ViewHolder> {
 
-        private ArrayList<Post> posts;
+        private String[] titles ;
 
-        DiscussionAdapter(ArrayList<Post> posts) {
-            this.posts=posts;
+        private String[] details ;
+
+        private int [] images ;
+
+        DiscussionAdapter(String[] titles, String[] details, int[] images) {
+            this.titles = titles;
+            this.details = details;
+            this.images = images;
         }
         class ViewHolder extends RecyclerView.ViewHolder{
             ImageView PosterImage;
@@ -80,13 +92,13 @@ public class InstructorDiscussion extends Fragment {
                 PosterName = (TextView)itemView.findViewById(R.id.postername);
                 PostContent = (TextView)itemView.findViewById(R.id.postcontent);
                 PostTime=(TextView)itemView.findViewById(R.id.posttime);
-                itemView.setOnClickListener(new View.OnClickListener() {
+               /* itemView.setOnClickListener(new View.OnClickListener() {
                     @Override public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), Grades_Charts.class);
                         startActivity(intent);
 
                     }
-                });
+                });*/
             }
         }
 
@@ -99,15 +111,15 @@ public class InstructorDiscussion extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder viewHolder, int i) {
-            viewHolder.PosterName.setText(posts.get(i).getPoster());
-            viewHolder.PostContent.setText(posts.get(i).getPostContent());
-            viewHolder.PosterImage.setImageResource(posts.get(i).getPosterImage());
-            viewHolder.PostTime.setText(posts.get(i).getPostTime());
+            viewHolder.PosterName.setText(titles[i]);
+            viewHolder.PostContent.setText(details[i]);
+            viewHolder.PosterImage.setImageResource(images[i]);
+            viewHolder.PostTime.setText("00:00 am");
         }
 
         @Override
         public int getItemCount() {
-            return posts.size();
+            return titles.length;
         }
     }
 }

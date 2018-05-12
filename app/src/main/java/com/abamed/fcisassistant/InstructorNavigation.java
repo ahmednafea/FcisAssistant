@@ -13,12 +13,6 @@ import com.abamed.fcisassistant.InstructorFragments.InstructorContent;
 import com.abamed.fcisassistant.InstructorFragments.InstructorDiscussion;
 import com.abamed.fcisassistant.InstructorFragments.InstructorGrades;
 import com.abamed.fcisassistant.InstructorFragments.InstructorProfile;
-import com.abamed.fcisassistant.StudentFragments.StudentContent;
-import com.abamed.fcisassistant.StudentFragments.StudentDiscussion;
-import com.abamed.fcisassistant.StudentFragments.StudentGrades;
-import com.abamed.fcisassistant.StudentFragments.StudentTable;
-
-import FcisAssistant.Instructor;
 
 public class InstructorNavigation extends AppCompatActivity {
 

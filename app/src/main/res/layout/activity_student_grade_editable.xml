@@ -7,13 +7,25 @@
     android:layout_height="match_parent"
     android:background="@drawable/login"
     tools:context=".StudentGradeEditable">
-
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/gradeschartbtn"
+    android:text="Show Degrees Chart "
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:textColor="@color/colorPrimaryDark"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:layout_marginBottom="5dp"
+    android:background="@layout/rounded_border_button"/>
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="20dp"
+        android:layout_below="@id/gradeschartbtn"
         android:background="@drawable/login"
         tools:context="com.abamed.fcisassistant.StudentGradeEditable" />
 
@@ -22,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="20dp"
+        android:layout_below="@id/gradeschartbtn"
         android:background="@drawable/login"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 

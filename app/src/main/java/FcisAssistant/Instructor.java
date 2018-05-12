@@ -1,21 +1,31 @@
 package FcisAssistant;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class Instructor extends Person{
     protected int NoofEvaluators;
     protected float TotalEvaluation;
-    protected int Image;
-    protected Vector<InstructorCourse> Courselist;
+    protected ArrayList<InstructorCourse> Courselist;
     protected String OfficeHours;
 
     public Instructor() {
-        ID=null;
-        Name=null;
-        Gender=null;
-        OfficeHours=null;
-        Email=null;
-        Password=null;
+        ID="No ID";
+        Name="NoName";
+        Gender="No Gender";
+        OfficeHours="Not Yet";
+        Email="Not Found";
+        Password="Not Found";
+
     }
+
+    public ArrayList<InstructorCourse> getCourselist() {
+        return Courselist;
+    }
+
+    public void setCourselist(ArrayList<InstructorCourse> courselist) {
+        Courselist = courselist;
+    }
+
     public void InsertCourse(InstructorCourse c) {
         Courselist.add(c);
      }
@@ -43,17 +53,18 @@ public class Instructor extends Person{
         TotalEvaluation = totalEvaluation;
     }
 
-    public int getImage() {
-        return Image;
-    }
-
-    public void setImage(int image) {
-        this.Image = image;
-    }
     public void Evaluate(float E){
         NoofEvaluators++;
         TotalEvaluation+=E;
         TotalEvaluation/=NoofEvaluators;
         TotalEvaluation*=10;
+    }
+    @Override
+    public void EditPassword(String password){
+        setPassword(password);
+    }
+    @Override
+    public void EditEmail(String email){
+        setEmail(email);
     }
 }

@@ -12,14 +12,13 @@ import android.view.MenuItem;
 import com.abamed.fcisassistant.StudentFragments.StudentContent;
 import com.abamed.fcisassistant.StudentFragments.StudentDiscussion;
 import com.abamed.fcisassistant.StudentFragments.StudentGrades;
-import com.abamed.fcisassistant.StudentFragments.StudentTable;
 
 public class StudentNavigation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_navigation);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.student_navigation);
+        BottomNavigationView navigation = findViewById(R.id.student_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
         layoutParams.setBehavior(new TopNavigationBehavior());
@@ -42,10 +41,6 @@ public class StudentNavigation extends AppCompatActivity {
                     return true;
                 case R.id.student_navigation_discussion:
                     fragment = new StudentDiscussion();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.student_navigation_table:
-                    fragment = new StudentTable();
                     loadFragment(fragment);
                     return true;
             }

@@ -1,6 +1,7 @@
 package com.abamed.fcisassistant.TAFragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,13 +16,19 @@ import android.widget.TextView;
 import com.abamed.fcisassistant.Course_Grades;
 import com.abamed.fcisassistant.InstructorFragments.InstructorGrades;
 import com.abamed.fcisassistant.R;
+import com.abamed.fcisassistant.StudentList;
+
+import java.util.ArrayList;
+
+import FcisAssistant.Adminstration;
+import FcisAssistant.InstructorCourse;
+import FcisAssistant.TACourse;
 
 public class TAGrades extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
-    String []Courses;
-    int [] Images;
+    ArrayList<TACourse> courses;
     public TAGrades() {
         // Required empty public constructor
     }
@@ -41,24 +48,20 @@ public class TAGrades extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tagrades, container, false);
-        Courses= new String[]{"OOP", "Logic"};
-        Images= new int[]{R.drawable.ana,R.drawable.ana};
+        courses= Adminstration.TA.getCourselist();
         recyclerView =view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new Grades_Adapter(Courses,Images);
+        adapter = new Grades_Adapter(courses);
         recyclerView.setAdapter(adapter);
         return view;
     }
     class Grades_Adapter extends RecyclerView.Adapter<Grades_Adapter.ViewHolder> {
 
-        private String[] Courses ;
-        private int [] images ;
-
-        Grades_Adapter(String[] titles, int[] images) {
-            this.Courses = titles;
-            this.images = images;
+        private ArrayList<TACourse> Courses ;
+        Grades_Adapter(ArrayList<TACourse> courses) {
+            this.Courses = courses;
         }
         class ViewHolder extends RecyclerView.ViewHolder{
             ImageView itemImage;
@@ -69,8 +72,9 @@ public class TAGrades extends Fragment {
                 itemTitle = (TextView)itemView.findViewById(R.id.coursename);
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override public void onClick(View v) {
-                        Course_Grades course_grades=new Course_Grades();
-                        startActivity(course_grades.getIntent());
+                        Intent intent = new Intent(getActivity(), StudentList.class);
+                       // intent.putExtra("Coursename",itemTitle.getText().toString());
+                        startActivity(intent);
                     }
                 });
             }
@@ -85,13 +89,13 @@ public class TAGrades extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder viewHolder, int i) {
-            viewHolder.itemTitle.setText(Courses[i]);
-            viewHolder.itemImage.setImageResource(images[i]);
+            viewHolder.itemTitle.setText(Courses.get(i).getName());
+            viewHolder.itemImage.setImageResource(R.drawable.material);
         }
 
         @Override
         public int getItemCount() {
-            return Courses.length;
+            return Courses.size();
         }
     }
 }
